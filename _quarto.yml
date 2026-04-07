@@ -1,0 +1,19 @@
+project: 
+  type: website
+  output-dir: docs
+
+
+website: 
+  title: "Caso_Inicial"
+  navbar: 
+    left: 
+      - href: index.qmd
+        text: Home
+      - href: viz.qmd
+        text: Visualization
+
+
+format:
+  html:
+    theme: cosmo
+    toc: true

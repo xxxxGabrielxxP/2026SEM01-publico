@@ -1,0 +1,28 @@
+---
+Title: "Visualization primera, dataset "
+---
+
+# Dataset
+Vamos a usar el dataset `vega_datasets`:
+
+````{python}
+import altair as alt
+from vega_datasets import data
+````
+Vamos a usar `cars`:
+
+```{python}
+cars = data.cars()
+cars.head()
+```
+
+# Visulización Scatterplot
+Vamos a hacer un scatterplot de `Horsepower` vs `Miles_per_Gallon`:
+```{python}
+alt.Chart(cars).mark_point().encode(
+    x='Horsepower',
+    y='Miles_per_Gallon',
+    color='Origin'
+)
+
+```

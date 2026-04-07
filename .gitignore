@@ -1,0 +1,8 @@
+# python
+.venv
+
+#quarto
+_site/
+.quarto
+/.quarto/
+*_files/
