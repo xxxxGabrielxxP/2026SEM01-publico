@@ -1,8 +1,8 @@
 ---
-Title: "Analisis de las preguntas de Pinguinos"
+Title: "Analisis de las preguntas de Pinguinos: Realizado por Carlos Marín y Gabriel Pesantez"
 format: 
     html:
-        toc: false
+        toc: true
 ---
 
 # Pregunta 1 – Distribución por grupo
