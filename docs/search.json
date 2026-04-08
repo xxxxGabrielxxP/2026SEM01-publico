@@ -4,13 +4,41 @@
     "href": "viz.html",
     "title": "Dataset",
     "section": "",
-    "text": "Dataset\nVamos a usar el dataset vega_datasets:\n\nimport altair as alt\nfrom vega_datasets import data\n\nVamos a usar cars:\n\ncars = data.cars()\ncars.head()\n\n\n\n\n\n\n\n\nName\nMiles_per_Gallon\nCylinders\nDisplacement\nHorsepower\nWeight_in_lbs\nAcceleration\nYear\nOrigin\n\n\n\n\n0\nchevrolet chevelle malibu\n18.0\n8\n307.0\n130.0\n3504\n12.0\n1970-01-01\nUSA\n\n\n1\nbuick skylark 320\n15.0\n8\n350.0\n165.0\n3693\n11.5\n1970-01-01\nUSA\n\n\n2\nplymouth satellite\n18.0\n8\n318.0\n150.0\n3436\n11.0\n1970-01-01\nUSA\n\n\n3\namc rebel sst\n16.0\n8\n304.0\n150.0\n3433\n12.0\n1970-01-01\nUSA\n\n\n4\nford torino\n17.0\n8\n302.0\n140.0\n3449\n10.5\n1970-01-01\nUSA\n\n\n\n\n\n\n\n\n\nVisulización Scatterplot\nVamos a hacer un scatterplot de Horsepower vs Miles_per_Gallon:\n\nalt.Chart(cars).mark_point().encode(\n    x='Horsepower',\n    y='Miles_per_Gallon',\n    color='Origin'\n)"
+    "text": "Importamos el dataset de penguins:\n\nimport pandas as pd\nimport altair as alt\n\nurl = \"https://raw.githubusercontent.com/erickedu85/dataset/master/penguins.csv\"\npenguins = pd.read_csv(url)\n\nVamos a usar penguins\n\npenguins.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nculmen_length_mm\nculmen_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMALE\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFEMALE\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFEMALE\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFEMALE"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Introducción",
+    "title": "Pregunta 1 – Distribución por grupo",
     "section": "",
-    "text": "Introducción\n\n\nObjertivos\n\n\nParte 2"
+    "text": "Se puede utilizar diferentes gráficos para presentar los datos, desde un gráfico tipo Heatmap de conteo, un boxplot, entre otros, en esta ocasión se uso el boxplot por la facilidad de interpretar los datos ### ¿Cómo facilitarías la comparación entre subgrupos sin sobrecargar un solo gráfico? Se puede utilizar un gráfico tipo mark_circle para ello, ya que permite identificar la masa corporal, así como la especie y el sexo de los pingüinos. ### Implementa tu elección y analiza visualmente qué patrones se observan. Se puede observar que la variable “body_mass_g” cambia de acuerdo con la especie y el género de los pingüinos, en general los machos tienen un índice de masa corporal mayor a las empras, además se observa que los pingüinos de la especie Gentoo presentan valores mayores."
+  },
+  {
+    "objectID": "viz.html#pregunta-2",
+    "href": "viz.html#pregunta-2",
+    "title": "Dataset",
+    "section": "Pregunta 2",
+    "text": "Pregunta 2\n\nalt.Chart(penguins).mark_rect().encode(\n    x='island:N',\n    y='species:N',\n    color='count()'\n)"
+  },
+  {
+    "objectID": "viz.html#pregunta-3",
+    "href": "viz.html#pregunta-3",
+    "title": "Dataset",
+    "section": "Pregunta 3",
+    "text": "Pregunta 3\n\nalt.Chart(penguins).mark_boxplot().encode(\n    x='sex:N',\n    y='body_mass_g:Q',\n    color='sex:N'\n)\n\n\n\n\n\n\n\n\nalt.Chart(penguins).mark_boxplot(size=60).encode(\n    x=alt.X('sex:N', title='Sexo'),\n    y=alt.Y('body_mass_g:Q', title='Masa corporal (g)'),\n    color=alt.Color('sex:N', legend=None)\n).properties(\n    title='Comparación de masa corporal entre machos y hembras'\n)\n\n\n\n\n\n\n\n&lt;!– lineas = alt.Chart(cars).mark_line().encode( x=‘Year’, y=‘mean(Miles_per_Gallon)’, color=‘Origin’ )\npuntos = lineas.mark_point().encode( y=‘Miles_per_Gallon’ )\nlineas + puntos"
+  },
+  {
+    "objectID": "index.html#cómo-varía-la-masa-corporal-body_mass_g-entre-las-diferentes-especies-e-islas-de-los-pingüinos",
+    "href": "index.html#cómo-varía-la-masa-corporal-body_mass_g-entre-las-diferentes-especies-e-islas-de-los-pingüinos",
+    "title": "Pregunta 1 – Distribución por grupo",
+    "section": "",
+    "text": "Se puede utilizar diferentes gráficos para presentar los datos, desde un gráfico tipo Heatmap de conteo, un boxplot, entre otros, en esta ocasión se uso el boxplot por la facilidad de interpretar los datos ### ¿Cómo facilitarías la comparación entre subgrupos sin sobrecargar un solo gráfico? Se puede utilizar un gráfico tipo mark_circle para ello, ya que permite identificar la masa corporal, así como la especie y el sexo de los pingüinos. ### Implementa tu elección y analiza visualmente qué patrones se observan. Se puede observar que la variable “body_mass_g” cambia de acuerdo con la especie y el género de los pingüinos, en general los machos tienen un índice de masa corporal mayor a las empras, además se observa que los pingüinos de la especie Gentoo presentan valores mayores."
+  },
+  {
+    "objectID": "index.html#qué-especies-de-pingüinos-se-encuentran-en-cada-isla-alguna-especie-está-presente-solo-en-una-isla",
+    "href": "index.html#qué-especies-de-pingüinos-se-encuentran-en-cada-isla-alguna-especie-está-presente-solo-en-una-isla",
+    "title": "Pregunta 1 – Distribución por grupo",
+    "section": "¿Qué especies de pingüinos se encuentran en cada isla? ¿Alguna especie está presente solo en una isla?",
+    "text": "¿Qué especies de pingüinos se encuentran en cada isla? ¿Alguna especie está presente solo en una isla?\n\n¿Qué técnica visual te permitiría mostrar esta relación de forma compacta y clara?\nPara observar las especies ubicadas en las islas se puede utilizar un Heatmap de conteo, con lo cual se observa las especies en cada isla, así como las islas que tienen mas de una especie Aplica una visualización que permita identificar asociaciones entre categorías. Como se menciona previamente el Heatmap de conteo permitirá analizar las variables categóricas y su frecuencia de ocurrencia, lo que permite identificar las correlaciones entre especies e islas.\n\n\nInterpreta el resultado.\nPara este punto se observa que en la especie Adelie habita en las tres islas, con una población ligeramente mayor en la isla Dream, por otro lado la especie Chinstrap habita únicamente en la isla Dream, finalmente la especie Gentoo habita en la isla Biscoe, pero tiene una población mayor a las otras especies."
   }
 ]

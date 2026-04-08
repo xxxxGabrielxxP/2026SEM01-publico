@@ -1,28 +1,95 @@
 ---
-Title: "Visualization primera, dataset "
+Title: "Analisis de datos de Pinguinos"
 ---
 
 # Dataset
-Vamos a usar el dataset `vega_datasets`:
+Importamos el dataset de `penguins`:
 
 ````{python}
+import pandas as pd
 import altair as alt
-from vega_datasets import data
+
+url = "https://raw.githubusercontent.com/erickedu85/dataset/master/penguins.csv"
+penguins = pd.read_csv(url)
+
 ````
-Vamos a usar `cars`:
+Vamos a usar `penguins`
 
 ```{python}
-cars = data.cars()
-cars.head()
+penguins.head()
 ```
 
-# Visulización Scatterplot
-Vamos a hacer un scatterplot de `Horsepower` vs `Miles_per_Gallon`:
+# Gráfico para responder la pregunta 1
+Vamos a hacer un 
 ```{python}
-alt.Chart(cars).mark_point().encode(
-    x='Horsepower',
-    y='Miles_per_Gallon',
-    color='Origin'
+alt.Chart(penguins).mark_rect().encode(
+    x='species:N',
+    y='sex:N',
+    color='mean(body_mass_g):Q'
 )
 
 ```
+
+
+```{python}
+alt.Chart(penguins).mark_bar().encode(
+    x=alt.X('body_mass_g:Q', bin=True),
+    y='count()',
+    color='species:N'
+)
+
+```
+
+
+
+## Pregunta 2
+```{python}
+alt.Chart(penguins).mark_rect().encode(
+    x='island:N',
+    y='species:N',
+    color='count()'
+)
+```
+
+
+
+## Pregunta 3
+```{python}
+alt.Chart(penguins).mark_boxplot().encode(
+    x='sex:N',
+    y='body_mass_g:Q',
+    color='sex:N'
+)
+```
+
+
+```{python}
+alt.Chart(penguins).mark_boxplot(size=60).encode(
+    x=alt.X('sex:N', title='Sexo'),
+    y=alt.Y('body_mass_g:Q', title='Masa corporal (g)'),
+    color=alt.Color('sex:N', legend=None)
+).properties(
+    title='Comparación de masa corporal entre machos y hembras'
+)
+
+
+```
+
+
+
+
+
+<!--
+```{python}
+lineas = alt.Chart(cars).mark_line().encode(
+    x='Year',
+    y='mean(Miles_per_Gallon)',
+    color='Origin'
+)
+
+puntos = lineas.mark_point().encode(
+    y='Miles_per_Gallon'
+)
+
+lineas + puntos
+
