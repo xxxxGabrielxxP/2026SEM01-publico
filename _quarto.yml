@@ -4,7 +4,7 @@ project:
 
 
 website: 
-  title: "Caso_Inicial"
+  title: "Tarea_2_ Análisis y Visualización de Datos"
   navbar: 
     left: 
       - href: index.qmd

@@ -1,0 +1,175 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "Title: \"Analisis de datos de Pinguinos\"\n",
+        "---\n",
+        "\n",
+        "# Dataset\n",
+        "Importamos el dataset de `penguins`:"
+      ],
+      "id": "f89afe4d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import altair as alt\n",
+        "\n",
+        "url = \"https://raw.githubusercontent.com/erickedu85/dataset/master/penguins.csv\"\n",
+        "penguins = pd.read_csv(url)"
+      ],
+      "id": "4009dcbd",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Vamos a usar `penguins`"
+      ],
+      "id": "6ec09c21"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "penguins.head()"
+      ],
+      "id": "de949a59",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Gráfico para responder la pregunta 1\n",
+        "Vamos a hacer un "
+      ],
+      "id": "244060f2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "alt.Chart(penguins).mark_rect().encode(\n",
+        "    x='species:N',\n",
+        "    y='sex:N',\n",
+        "    color='mean(body_mass_g):Q'\n",
+        ")"
+      ],
+      "id": "d4faf776",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "alt.Chart(penguins).mark_bar().encode(\n",
+        "    x=alt.X('body_mass_g:Q', bin=True),\n",
+        "    y='count()',\n",
+        "    color='species:N'\n",
+        ")"
+      ],
+      "id": "ab65f7ef",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Pregunta 2"
+      ],
+      "id": "df5b9830"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "alt.Chart(penguins).mark_rect().encode(\n",
+        "    x='island:N',\n",
+        "    y='species:N',\n",
+        "    color='count()'\n",
+        ")"
+      ],
+      "id": "af13612e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Pregunta 3"
+      ],
+      "id": "a0158327"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "alt.Chart(penguins).mark_boxplot().encode(\n",
+        "    x='sex:N',\n",
+        "    y='body_mass_g:Q',\n",
+        "    color='sex:N'\n",
+        ")"
+      ],
+      "id": "6f462599",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "alt.Chart(penguins).mark_boxplot(size=60).encode(\n",
+        "    x=alt.X('sex:N', title='Sexo'),\n",
+        "    y=alt.Y('body_mass_g:Q', title='Masa corporal (g)'),\n",
+        "    color=alt.Color('sex:N', legend=None)\n",
+        ").properties(\n",
+        "    title='Comparación de masa corporal entre machos y hembras'\n",
+        ")\n"
+      ],
+      "id": "9c209a68",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "<!--\n",
+        "lineas = alt.Chart(cars).mark_line().encode(\n",
+        "    x='Year',\n",
+        "    y='mean(Miles_per_Gallon)',\n",
+        "    color='Origin'\n",
+        ")\n",
+        "\n",
+        "puntos = lineas.mark_point().encode(\n",
+        "    y='Miles_per_Gallon'\n",
+        ")\n",
+        "\n",
+        "lineas + puntos\n"
+      ],
+      "id": "a786f3ba"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "d:\\0.Base_datos\\Visualizacion\\venv\\share\\jupyter\\kernels\\python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

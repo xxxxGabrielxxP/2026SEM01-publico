@@ -4,30 +4,7 @@ format:
     html:
         toc: true
 ---
+Realizado por: Carlos Marín y Gabriel Pesantez.
 
-# Pregunta 1 – Distribución por grupo
-## ¿Cómo varía la masa corporal (body_mass_g) entre las diferentes especies e islas de los pingüinos?
-### ¿Qué tipo de gráfico usarías para comparar la distribución de una variable cuantitativa entre varios grupos definidos por dos variables categóricas?
-Se puede utilizar diferentes gráficos para presentar los datos, desde un gráfico tipo Heatmap de conteo, un boxplot, entre otros, en esta ocasión se uso el boxplot por la facilidad de interpretar los datos
-### ¿Cómo facilitarías la comparación entre subgrupos sin sobrecargar un solo gráfico?
-Se puede utilizar un gráfico tipo mark_circle para ello, ya que permite identificar la masa corporal, así como la especie y el sexo de los pingüinos.
-### Implementa tu elección y analiza visualmente qué patrones se observan.
-Se puede observar que la variable “body_mass_g” cambia de acuerdo con la especie y el género de los pingüinos, en general los machos tienen un índice de masa corporal mayor a las empras, además se observa que los pingüinos de la especie Gentoo presentan valores mayores.
- 
- 
-# Pregunta 2 – Ubicación de especies
-## ¿Qué especies de pingüinos se encuentran en cada isla? ¿Alguna especie está presente solo en una isla?
-### ¿Qué técnica visual te permitiría mostrar esta relación de forma compacta y clara?
-Para observar las especies ubicadas en las islas se puede utilizar un Heatmap de conteo, con lo cual se observa las especies en cada isla, así como las islas que tienen mas de una especie
-Aplica una visualización que permita identificar asociaciones entre categorías.
-Como se menciona previamente el Heatmap de conteo permitirá analizar las variables categóricas y su frecuencia de ocurrencia, lo que permite identificar las correlaciones entre especies e islas.
- 
-### Interpreta el resultado.
-Para este punto se observa que en la especie Adelie habita en las tres islas, con una población ligeramente mayor en la isla Dream, por otro lado la especie Chinstrap habita únicamente en la isla Dream, finalmente la especie Gentoo habita en la isla Biscoe, pero tiene una población mayor a las otras especies.
- 
-# Pregunta 3 – Diferencias entre sexos
-### ¿Existen diferencias notables entre machos y hembras en alguna característica cuantitativa?
-Elige una variable cuantitativa adecuada (como culmen_length_mm, culmen_depth_mm, etc.)
-Para este caso se elige la variable bpdy_mass_g, se identifica que los machos tienen un peso mayor que las hembras en todas las especies
-### Justifica el gráfico que usarías para comparar distribuciones entre dos categorías.
-El boxplot permite una comparación entre categorías al representar estadísticos de la distribución (mediana, cuartiles y valores extremos), lo que facilita la identificación de diferencias estructurales entre grupos.
+
+Se analiza la distribución de la masa corporal en pingüinos según especie, isla y sexo mediante boxplots y gráficos complementarios. Se identifican diferencias significativas entre grupos, destacando mayor masa en machos y en la especie Gentoo. Un heatmap permite observar la relación entre especies e islas, evidenciando que algunas especies son exclusivas de determinadas ubicaciones.
